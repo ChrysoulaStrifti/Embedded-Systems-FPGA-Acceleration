@@ -1,3 +1,3 @@
 # Embedded-Systems-FPGA-Acceleration
 
-Progect as part of relevant course
+Project as part of relevant course
