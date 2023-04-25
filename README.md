@@ -18,7 +18,8 @@ N-padding: Padding focused on dependencies of our algorithm
 
 Anti-diagonals:
 
-<img align="center" scr="https://user-images.githubusercontent.com/123579658/234270519-529e75f1-d4f0-45bd-808b-39f6ab8e2516.png" width=30% height=30%>
+![square drawio](https://user-images.githubusercontent.com/123579658/234270519-529e75f1-d4f0-45bd-808b-39f6ab8e2516.png)
+
 
 Iter:
 
