@@ -16,10 +16,10 @@ N-padding: Padding focused on dependencies of our algorithm
 
 ## Memory Handling 
 
-Anti-diagonals:
+Anti-diagonals: Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third
+one. 
 
-![square drawio](https://user-images.githubusercontent.com/123579658/234270519-529e75f1-d4f0-45bd-808b-39f6ab8e2516.png)
-
+<img align="center" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
 
 Iter:
 
