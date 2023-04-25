@@ -2,36 +2,45 @@
 
 This project is a part of ECE 340 Embedded Systems course at University of Thessaly
 
+We present 2 versions of the code for the same [algorithm](https://github.com/ChrysoulaStrifti/Embedded-Systems-FPGA-Acceleration/edit/main/README.md#explaining-the-algorithm). The software implementation was profiled with CPU performance in mind, while the hardware implementation was run in Xilinx Zedboard FPGA. 
+
+An OpenCL-based host unit was responsible for all the data management and the configuring the hardware accelerator. It was also used to verify the correct algorithm execution by blocking, waiting and checking the result. 
+
 # Optimization techniques
 
 ## Padding
 
-Left and Right padding: Extra row and column in order to avoid costly if/else statements
+- Left and Right padding: Extra row and column in order to avoid costly if/else statements
 
 ![square drawio](https://user-images.githubusercontent.com/123579658/234270519-529e75f1-d4f0-45bd-808b-39f6ab8e2516.png)
 
 
-N-padding: Padding focused on dependencies of our algorithm
+- N-padding: Padding focused on dependencies of our algorithm
 
+We fill the matrix with random A-C-T-G nucleobases while the padding is filled with the letter 'W' to show the parts of the padded matrix. 
 
 ## Memory Handling 
 
-Anti-diagonals: Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third one. 
+- Anti-diagonals: 
+Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third one. Each cell/computation now depends on the upper 2 rows as the arrows show in the diagram below. 
 
-<img align="center" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
+<img align="right" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
 
-Iter:
+- Iter:
+There is a memory limit in FPGA and therefore we load our matrices with multiple iterations depending on the size/shape of the matrix. This can be achieved by using the iter parameter to load blocks of memory and taking care of the modulo upfront.
 
-Similarity temp:
+<img align="right" src="https://user-images.githubusercontent.com/123579658/234336887-7dbe1bc5-200f-4113-a8af-6ccb36152897.png" width=30% height=30%>
 
-Type change to char:
+
+- Directives: 
+The vitis HLS tool we used allowed us to easily implement HLS directives. In the loops we found it was most beneficial we used UNROLL to transform our loops.
 
 # Metrics and results
 
 
-As a result from the above optimizations for hardware perfomance, we can see that our final version (version 3) is slower when run in a CPU than our initial implementation profiled specifically for CPU(version 1). 
+As a result of the above optimizations for hardware perfomance, we can see that our final version (version 3) is slower when run in a CPU than our initial implementation profiled specifically for CPU(version 1). 
 
-<img align="center" src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=30% height=30%>
+<img align="center" src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=40% height=40%>
 
 
 
