@@ -2,7 +2,7 @@
 
 This project is a part of ECE 340 Embedded Systems course at University of Thessaly
 
-We present 2 versions of the code for the same [algorithm](https://github.com/ChrysoulaStrifti/Embedded-Systems-FPGA-Acceleration/edit/main/README.md#explaining-the-algorithm). The software implementation was profiled with CPU performance in mind, while the hardware implementation was run in Xilinx Zedboard FPGA. 
+We present 2 versions of the code for the same [algorithm](https://github.com/ChrysoulaStrifti/Embedded-Systems-FPGA-Acceleration/edit/main/README.md#explaining-the-algorithm) which are . The software implementation was profiled with CPU performance in mind, while the hardware implementation was run in Xilinx Zedboard FPGA. 
 
 An OpenCL-based host unit was responsible for all the data management and the configuring the hardware accelerator. It was also used to verify the correct algorithm execution by blocking, waiting and checking the result. 
 
