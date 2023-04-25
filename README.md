@@ -42,7 +42,7 @@ The vitis HLS tool allowed us to easily implement HLS directives. In the loops w
 
 As a result of the above optimizations for hardware performance, we can see that our final version (version 3) is slower when run in a CPU than our initial implementation profiled specifically for CPU(version 1). 
 
-<img align="middle" src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=40% height=40%>
+<img src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=40% height=40%>
 
 
 
