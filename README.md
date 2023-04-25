@@ -6,6 +6,8 @@ We present 2 versions of the code for the same [algorithm](https://github.com/Ch
 
 An OpenCL-based host unit was responsible for all the data management and the configuring the hardware accelerator. It was also used to verify the correct algorithm execution by blocking, waiting and checking the result. 
 
+Below we explain our train of thought and basic conclusions after experimenting with different versions and techniques
+
 # Optimization techniques
 
 ## Padding
@@ -24,23 +26,23 @@ We fill the matrix with random A-C-T-G nucleobases while the padding is filled w
 - Anti-diagonals: 
 Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third one. Each cell/computation now depends on the upper 2 rows as the arrows show in the diagram below. 
 
-<img align="right" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
+<img align="middle" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
 
 - Iter:
 There is a memory limit in FPGA and therefore we load our matrices with multiple iterations depending on the size/shape of the matrix. This can be achieved by using the iter parameter to load blocks of memory and taking care of the modulo upfront.
 
-<img align="right" src="https://user-images.githubusercontent.com/123579658/234336887-7dbe1bc5-200f-4113-a8af-6ccb36152897.png" width=30% height=30%>
+<img src="https://user-images.githubusercontent.com/123579658/234336887-7dbe1bc5-200f-4113-a8af-6ccb36152897.png" width=20% height=20%>
 
 
 - Directives: 
-The vitis HLS tool we used allowed us to easily implement HLS directives. In the loops we found it was most beneficial we used UNROLL to transform our loops.
+The vitis HLS tool allowed us to easily implement HLS directives. In the loops we found it was most beneficial we used UNROLL to transform our loops.
 
 # Metrics and results
 
 
-As a result of the above optimizations for hardware perfomance, we can see that our final version (version 3) is slower when run in a CPU than our initial implementation profiled specifically for CPU(version 1). 
+As a result of the above optimizations for hardware performance, we can see that our final version (version 3) is slower when run in a CPU than our initial implementation profiled specifically for CPU(version 1). 
 
-<img align="center" src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=40% height=40%>
+<img align="middle" src="https://user-images.githubusercontent.com/123579658/234267498-cf17cab7-bf9b-4b67-8bc4-7a06bee66f74.png" width=40% height=40%>
 
 
 
@@ -53,8 +55,7 @@ and searches for the longest local sequence alignment. The algorithm works as fo
 comparison, it creates 3 temporary variables which contain the values of the west (cell on the left of the current one), the
 north (cell above the current one) and the northwest(cell on the up-left of the current one) cells.
 <figure>
-  <img align="center" src="https://user-images.githubusercontent.com/123579658/234262882-114b36b3-6f3b-4ca2-84aa-776f2debbdc0.png">
-  <figcaption>Fig. 1. Example of a dependency on neighboring cells</figcaption>
+  <img align="middle" src="https://user-images.githubusercontent.com/123579658/234262882-114b36b3-6f3b-4ca2-84aa-776f2debbdc0.png">
 </figure>
 
 
@@ -64,6 +65,3 @@ north cells will be always reduced by one. The algorithm picks the largest of th
 that corresponds to the letters compared. If all the numbers are below zero, the cell’s value will be zero. The first version
 (lsal full) we created runs in this way, calculating row by row the elements until the matrix is filled.
 
-
-
-CODE WILL SOON BE UPLOADED
