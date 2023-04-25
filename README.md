@@ -16,8 +16,7 @@ N-padding: Padding focused on dependencies of our algorithm
 
 ## Memory Handling 
 
-Anti-diagonals: Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third
-one. 
+Anti-diagonals: Turning antidiagonals into rows taking into consideration that we need 2 anti diagonals to calculate the third one. 
 
 <img align="center" src="https://user-images.githubusercontent.com/123579658/234271914-274b4295-f92b-4d4f-9556-8cbb1eac9a49.png" width=30% height=30%>
 
